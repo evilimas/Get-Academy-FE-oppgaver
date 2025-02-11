@@ -23,8 +23,10 @@
         var smileyIndex = 0;
 
         // view
+        
         updateView()
         function updateView() {
+            
             var smiley = smileyIndex == 0 ? '😀' : '😁';
             // document.getElementById('app').innerHTML = `
             //     <div id="image" onclick="doClick()">${smiley}</div>
@@ -32,36 +34,22 @@
             //     <button onclick="buyUpgrade()">Kjøp oppgradering (10 poeng)</button>
             // `
             
+            
             const app = document.querySelector('#app')
             const imageDiv = document.createElement('div')
-            imageDiv.setAttribute('id', "image")
-            imageDiv.textContent = `${smiley}`
-            app.appendChild(imageDiv)
-            imageDiv.addEventListener('click', function(){
-                doClick()
-                imageDiv.remove()
-                pointsDiv.remove()
-                button.remove()
-            })
+            imageDiv.addEventListener('click', doClick)
+            appendDiv(smiley, imageDiv)
 
             const pointsDiv = document.createElement('div')
-            pointsDiv.setAttribute('id', 'pointsInfo')
-            pointsDiv.textContent = `${points}`
-            app.appendChild(pointsDiv)
+            appendDiv(points, pointsDiv)
 
             const button = document.createElement('button')
             button.textContent = 'Kjøp oppgradering (10 poeng)'
             app.appendChild(button)
-            button.addEventListener('click', function() {
-                if(points >= 10){
-                    buyUpgrade()
-                    imageDiv.remove()
-                    pointsDiv.remove()
-                    button.remove()
-
-                }
-            })
+            button.addEventListener('click', buyUpgrade)
+            
         }
+       
        
     </script>
 </body>
