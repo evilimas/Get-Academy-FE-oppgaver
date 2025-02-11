@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <style>
+        div {
+            font-size: 300%;
+            user-select: none;
+        }
+    </style>
+    <script src="controller.js"></script>
+</head>
+
+<body>
+    <div id="app"></div>
+
+    <script>
+        // model
+        var points = 0;
+        var pointsPerClick = 1;
+        var smileyIndex = 0;
+
+        // view
+        updateView()
+        function updateView() {
+            var smiley = smileyIndex == 0 ? '😀' : '😁';
+            // document.getElementById('app').innerHTML = `
+            //     <div id="image" onclick="doClick()">${smiley}</div>
+            //     <div id="pointsInfo">${points}</div>
+            //     <button onclick="buyUpgrade()">Kjøp oppgradering (10 poeng)</button>
+            // `
+            
+            const app = document.querySelector('#app')
+            const imageDiv = document.createElement('div')
+            imageDiv.setAttribute('id', "image")
+            imageDiv.textContent = `${smiley}`
+            app.appendChild(imageDiv)
+            imageDiv.addEventListener('click', function(){
+                doClick()
+                imageDiv.remove()
+                pointsDiv.remove()
+                button.remove()
+            })
+
+            const pointsDiv = document.createElement('div')
+            pointsDiv.setAttribute('id', 'pointsInfo')
+            pointsDiv.textContent = `${points}`
+            app.appendChild(pointsDiv)
+
+            const button = document.createElement('button')
+            button.textContent = 'Kjøp oppgradering (10 poeng)'
+            app.appendChild(button)
+            button.addEventListener('click', function() {
+                if(points >= 10){
+                    buyUpgrade()
+                    imageDiv.remove()
+                    pointsDiv.remove()
+                    button.remove()
+
+                }
+            })
+        }
+       
+    </script>
+</body>
+
+</html>
