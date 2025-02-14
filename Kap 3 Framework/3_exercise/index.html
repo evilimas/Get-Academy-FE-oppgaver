@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="no">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rabatt Kalkulator</title>
+</head>
+
+<body>
+
+    <h1>Rabatt Kalkulator</h1>
+    <label for="price">Pris:</label>
+    <input type="number" id="price" placeholder="Skriv inn pris">
+
+    <label for="discountType">Velg rabattype:</label>
+    <select id="discountType">
+        <option value="percentDiscount">20 % rabatt</option>
+        <option value="fixedDiscount">50 kr rabatt</option>
+        <option value="percentDiscountWithMax">40% rabatt, men maks. rabatt 100kr</option>
+    </select>
+
+    <button onclick="calculateDiscount()">Beregn pris</button>
+
+    <h2 id="result">Ny pris: -</h2>
+
+    <script>
+
+        function calculateDiscount() {
+            const price = parseFloat(document.getElementById("price").value);
+            const selectedDiscount = document.getElementById("discountType").value;
+
+            if (!price || price < 0) {
+                alert("Vennligst skriv inn en gyldig pris.");
+                return;
+            }
+
+            let newPrice = 0;
+            document.getElementById("result").textContent = `Ny pris: ${newPrice.toFixed(2)} kr`;
+        }
+
+        const percentDiscount = price => price * 0.8; // 20% rabatt
+        const fixedDiscount = price => price - 50; // Fast 50kr rabatt
+        const percentDiscountWithMax = price => Math.max(price * 0.6, price - 100); // 40% rabatt, men maks. rabatt 100kr
+    </script>
+
+</body>
+
+</html>
