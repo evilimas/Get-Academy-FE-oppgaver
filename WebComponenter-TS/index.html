@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="no">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Web Components</title>
+    <link rel="stylesheet" href="./src/style.css" />
+  </head>
+  <body>
+    <!-- <div class="countdown-container">
+      <p>Nedtelling til hendelse:</p>
+      <div class="countdown">00:00:00</div>
+      <button onclick="startCountdown(10)">Start 10 sek</button>
+    </div> -->
+    <timer-element countdown="15"></timer-element>
+    <br />
+    <timer-element countdown="20"></timer-element>
+    <br />
+    <timer-element countdown="30"></timer-element>
+
+    <script type="module" src="./src/index.ts"></script>
+  </body>
+</html>
