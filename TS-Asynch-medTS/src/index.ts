@@ -13,6 +13,7 @@ async function getJokes(): Promise<void> {
     app!.innerHTML = `<p class="bold">Word for search is ${jokeWord}</p>`;
 
     const jokesWithWordUrl: string = `https://api.chucknorris.io/jokes/search?query=${jokeWord}`;
+
     const jokesWithWordObjects = await axios.get(jokesWithWordUrl);
 
     const first25Jokes = jokesWithWordObjects.data.result.slice(0, 20);
