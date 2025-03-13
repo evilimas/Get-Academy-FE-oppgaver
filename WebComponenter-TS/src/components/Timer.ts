@@ -1,28 +1,4 @@
-let countdownInterval: string;
-
-function startCountdown(seconds: number) {
-  clearInterval(countdownInterval);
-  const countdownElement = document.querySelector('.countdown');
-  let timeLeft = seconds;
-
-  function updateDisplay() {
-    const minutes = String(Math.floor(timeLeft / 60)).padStart(2, '0');
-    const seconds = String(timeLeft % 60).padStart(2, '0');
-    countdownElement!.textContent = `00:${minutes}:${seconds}`;
-  }
-
-  updateDisplay();
-
-  countdownInterval = setInterval(() => {
-    timeLeft--;
-    updateDisplay();
-
-    if (timeLeft <= 0) {
-      clearInterval(countdownInterval);
-      countdownElement!.textContent = 'Tid er ute!';
-    }
-  }, 1000);
-}
+import startCountdown from '../startCountdown';
 
 const DEFAULT_COUNTDOWN = '10';
 
@@ -35,6 +11,16 @@ export default class Timer extends HTMLElement {
     this.setAttribute('countdown', value);
   }
 
+  //   attributeChangedCallback(name, oldValue, newValue) {
+  //     if (!this.value) {
+  //       return;
+  //     }
+
+  //     if (name === 'color') {
+  //       this.div.style.color = newValue;
+  //     }
+  //   }
+
   connectedCallback() {
     window.requestAnimationFrame(() => {
       const div = document.createElement('div');
@@ -46,8 +32,9 @@ export default class Timer extends HTMLElement {
       countDiv.textContent = '00:00:00';
       const btn = document.createElement('button');
       btn.textContent = `Start ${this.countdown} sek`;
+
       btn.addEventListener('click', () =>
-        startCountdown(parseInt(this.countdown))
+        startCountdown(parseInt(this.countdown), countDiv)
       );
       div.appendChild(p);
       div.appendChild(countDiv);
