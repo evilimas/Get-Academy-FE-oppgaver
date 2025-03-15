@@ -1,5 +1,5 @@
 import Timer from './components/Timer.ts';
-import startCountdown from './startCountdown.ts';
+// import startCountdown from './startCountdown.ts';
 
 window.customElements.define('timer-element', Timer);
 

@@ -1,7 +1,6 @@
 let countdownInterval: string;
 
 export default function startCountdown(seconds: number, countDiv: HTMLElement) {
-  clearInterval(countdownInterval);
   const countdownElement = document.querySelector('.countdown');
 
   //   const countdownElement = document.querySelectorAll('.countdown');
