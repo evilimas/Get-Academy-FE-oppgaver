@@ -11,15 +11,6 @@ export default class Timer extends HTMLElement {
     this.setAttribute('countdown', value);
   }
 
-  //   attributeChangedCallback(name, oldValue, newValue) {
-  //     if (!this.value) {
-  //       return;
-  //     }
-
-  //     if (name === 'color') {
-  //       this.div.style.color = newValue;
-  //     }
-  //   }
 
   connectedCallback() {
     window.requestAnimationFrame(() => {
